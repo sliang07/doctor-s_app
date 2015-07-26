@@ -1,0 +1,35 @@
+<html ng-app="myApp">
+<head>
+	<script src="/js/libraries/angular.min.js"></script>
+	<script src="/js/libraries/angular-route.min.js"></script>
+	<script src="/js/libraries/jquery-1.11.2.js"></script>
+	<script src="/js/libraries/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/chat.css">
+	<script type="text/javascript">
+	</script>
+</head>
+<body>
+  <div class= "container" ng-controller="personController">
+  	<h1>Welcome</h1>
+  	<input type="text" placeholder="Search..." ng-model='filter_name'>
+  	<table class='table'>
+  		<tr class='active'>
+  			<th>Date</th>
+  			<th>Time</th>
+  			<th>Patient Name</th>
+  			<th>Complain</th>
+        <th>Action</th>
+  		</tr>
+  		<tr ng-repeat="index in appointments | filter: filter_name | orderBy: 'date':true " class='success'>
+        <td ng-bind="index.date | date: 'mediumDate' "></td>
+        <td ng-bind="index.time | date: 'shortTime'"></td>
+        <td ng-bind="index.name"></td>
+        <td ng-bind="index.complain"></td>
+        <td><input type="submit" class= "btn btn-danger" value="Delete" ng-click="removeAppointment(index._id)"></td>
+  	</table>
+  	<a href="#/add"><button class="btn btn-success">Add an Appointment</button></a>
+  </div>
+</body>
+</html>

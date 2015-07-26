@@ -1,0 +1,26 @@
+{
+  "name": "doctor_app",
+  "version": "1.0.0",
+  "description": "Doctor's utility tool.",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "ejs": "^1.0.0",
+    "express": "^4.13.1",
+    "mongoose": "^4.0.4",
+    "mysql": "^2.7.0",
+    "socket.io": "^1.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "heroku",
+    "mean",
+    "project"
+  ],
+  "author": "stanley-liang",
+  "license": "ISC"
+}

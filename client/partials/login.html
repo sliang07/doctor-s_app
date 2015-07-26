@@ -1,0 +1,25 @@
+<html ng-app='myApp'>
+<head>
+	<script src="/js/libraries/angular.min.js"></script>
+	<script src="/js/libraries/angular-route.min.js"></script>
+	<script src="/js/libraries/jquery-1.11.2.js"></script>
+	<script src="/js/libraries/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap-theme.min.css">
+	<script type ="text/javascript" src="/socket.io/socket.io.js"></script>	
+	<script type="text/javascript">
+	<script type="text/javascript">
+		var socket = .io.connect();
+		$(document).ready(function(){
+		})
+	</script>
+</head>
+<body>
+	<div class = 'container' ng-controller='personController'>
+	  	<h1>Welcome!</h1>
+	  	<h1>Please enter your name to join and share ideas.</h1>
+	  	<input type="text" id="name" ng-model='newName.name'>
+	  	<input type="submit" id="name_submit" class='btn btn-primary' ng-click='Name()'>
+	</div>
+</body>
+</html>		

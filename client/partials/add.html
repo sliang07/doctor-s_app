@@ -1,0 +1,29 @@
+<html ng-app="myApp">
+<head>
+	<script src="/js/libraries/angular.min.js"></script>
+	<script src="/js/libraries/angular-route.min.js"></script>
+	<script src="/js/libraries/jquery-1.11.2.js"></script>
+	<script src="/js/libraries/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/chat.css">
+	<script type="text/javascript">
+	</script>
+</head>
+<body>
+  <div class= "container" ng-controller="personController">
+    <h3>Add a new Appointment</h3>
+    <p>Date:<input type="date" ng-model="newAppointment.date"></p>
+    <p>Name:<input type="text" ng-model="newAppointment.name" ></p>
+    <p>
+      Complain:<input type="text" ng-model="newAppointment.complain"></p>
+    <p>
+      <label for="Inputtime">Pick a time between 8am and 5pm:</label>
+      <input type="time" id="Inputtime" ng-model="newAppointment.time">
+    </p>
+  </p>
+    <input type="submit" class="btn btn-primary" ng-click="addAppointment()" value="Submit">
+    <a href="#/"><button class="btn btn-info">Go back</button></a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<html ng-app='myApp'>
+<head>
+	<script src="/js/libraries/angular.min.js"></script>
+	<script src="/js/libraries/angular-route.min.js"></script>
+	<script src="/js/libraries/jquery-1.11.2.js"></script>
+	<script src="/js/libraries/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/chat.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap-theme.min.css">
+	<script type="text/javascript" src="/js/angularcode.js"></script>
+	<script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var socket = io.connect();
+			var person_name = prompt('Please Enter a name.');
+			if (!person_name){
+
+				var person_name = "Anonymous";
+			}			
+			socket.emit('chat_connect', person_name);			
+			$('#chatclick').click(function(){
+					$('#chatclick').fadeOut();
+					$('#chatcontainer').fadeIn();					
+					$('#chatbox').fadeIn();
+					$('#chat_msg').fadeIn();
+				})
+				socket.on('user_joined', function(data){
+					$('#chatbox').append('<p>' + data.name + " has joined the App. </p>");
+				})
+				socket.on('user_left', function(data){
+					$('#chatbox').append('<p>' + data.name + " has left the App. </p>");
+				})
+				socket.on('user_list', function(data){
+					$("#chatusers").html('');
+					$('#chatusers').append('<h4> Users: </h4>');
+					for(value in data.list){
+						$('#chatusers').append('<p>' + data.list[value] + "</p>");
+					}
+				})
+			$("#chat_msg").submit(function(){
+				socket.emit('msg_sent', $("#msg").val());
+				$('#msg').val("");
+			})
+			socket.on('msg_display', function(data){
+				$('#chatbox').append('<p>' + data.name + " says: " + data.msg + "</p>")
+				$("#chatbox").scrollTop($("#chatbox")[0].scrollHeight)
+			})
+		})
+	</script>
+</head>
+<body>
+	<div id="lefthalf"></div>
+	<div id="righthalf"></div>
+	<div ng-view="">
+	</div>
+	<button id="chatclick" class="btn btn-info">Click Here to Chat with Others</button>
+	<div id="chatcontainer">
+		<div id="chatbox">
+		</div>
+		<div id="chatusers">
+		</div>
+		<form id="chat_msg" class="form-inline">
+			<input type="text" id="msg" class="form-control" placeholder="Enter Message...">
+			<input type="submit" class="btn btn-danger" value="Send">
+		</form>
+	</div>
+</body>
+</html>
