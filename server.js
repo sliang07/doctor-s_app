@@ -2,26 +2,13 @@ var express = require("express");
 var path = require("path");
 var app = express();
 var bodyParser = require('body-parser');
-var port = process.env.PORT || 3000;
-// Added These lines for heroku
-var server = app.listen(port, function() {
-console.log("Listening on " + port);
+var server = app.listen(9001, function(){
+	console.log("LISTENING ON PORT OVER 9000 + 1");
 });
-var mongostr = "mongodb://heroku_qr70rcj2:sbfv0lihbd101cbdq3vgtqk1fa@ds061751.mongolab.com:61751/heroku_qr70rcj2"
-var localstr = "mongodb://localhost/doctor_app";
-var database = null;
-ArticleProvider = function() {
-	mongo.connect(mongostr, {}, function(error, db){
-		console.log("connected, db: " + db);
-
-		database = db;
-
-			database.addListener("error", function(error){
-				console.log("Error connecting to MongoLab");
-			});
-	});
-};
-//
+var mongoose = require('mongoose');
+// mongodb://heroku_qr70rcj2:sbfv0lihbd101cbdq3vgtqk1fa@ds061751.mongolab.com:61751/heroku_qr70rcj2
+var uri = 'mongodb://heroku_qr70rcj2:sbfv0lihbd101cbdq3vgtqk1fa@ds061751.mongolab.com:61751/heroku_qr70rcj2'
+mongoose.connect(uri)
 var io = require('socket.io').listen(server);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
