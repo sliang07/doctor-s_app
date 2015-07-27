@@ -6,8 +6,8 @@ var server = app.listen(9001, function(){
 	console.log("LISTENING ON PORT OVER 9000 + 1");
 });
 var mongoose = require('mongoose');
-// mongodb://heroku_qr70rcj2:sbfv0lihbd101cbdq3vgtqk1fa@ds061751.mongolab.com:61751/heroku_qr70rcj2
-var uri = 'mongodb://heroku_qr70rcj2:sbfv0lihbd101cbdq3vgtqk1fa@ds061751.mongolab.com:61751/heroku_qr70rcj2'
+//mongodb://heroku_9db2c9n0:8ba0iab6vlenq24tt5brjd3n2p@ds027483.mongolab.com:27483/heroku_9db2c9n0
+var uri = 'mongodb://heroku_9db2c9n0:8ba0iab6vlenq24tt5brjd3n2p@ds027483.mongolab.com:27483/heroku_9db2c9n0'
 mongoose.createConnection(uri);
 var io = require('socket.io').listen(server);
 app.use(bodyParser.json());
