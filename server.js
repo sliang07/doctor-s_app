@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 var server = app.listen(9001, function(){
 	console.log("LISTENING ON PORT OVER 9000 + 1");
 });
+var mongoose = require("mongoose");
+mongoose.connect('mongodb://sliang07@yahoo.com:goldfish1@ds061751.mongolab.com:61751/heroku_qr70rcj2')
 var io = require('socket.io').listen(server);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
