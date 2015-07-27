@@ -8,7 +8,7 @@ var server = app.listen(9001, function(){
 var mongoose = require('mongoose');
 //mongodb://heroku_9db2c9n0:8ba0iab6vlenq24tt5brjd3n2p@ds027483.mongolab.com:27483/heroku_9db2c9n0
 var uri = 'mongodb://heroku_9db2c9n0:8ba0iab6vlenq24tt5brjd3n2p@ds027483.mongolab.com:27483/heroku_9db2c9n0'
-mongoose.createConnection(uri);
+mongoose.createConnection(process.env.MONGOLAB_URI || uri);
 var io = require('socket.io').listen(server);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
