@@ -2,13 +2,13 @@ var express = require("express");
 var path = require("path");
 var app = express();
 var bodyParser = require('body-parser');
-var server = app.listen(9001, function(){
-	console.log("LISTENING ON PORT OVER 9000 + 1");
+var port = process.env.PORT || 9001;
+var server = app.listen(port, function(){
+	console.log("LISTENING ON PORT" + port);
 });
 var mongoose = require('mongoose');
 //mongodb://heroku_9db2c9n0:8ba0iab6vlenq24tt5brjd3n2p@ds027483.mongolab.com:27483/heroku_9db2c9n0
 var uri = 'mongodb://heroku_9db2c9n0:8ba0iab6vlenq24tt5brjd3n2p@ds027483.mongolab.com:27483/heroku_9db2c9n0'
-mongoose.createConnection(process.env.MONGOLAB_URI || uri);
 var io = require('socket.io').listen(server);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

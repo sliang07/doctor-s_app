@@ -22,17 +22,18 @@ var myApp = angular.module('myApp',['ngRoute']);
 				})
 			}
 			factory.addAppointment = function(info,callback){
-				console.log(info);
-				if (!info || !info.date || !info.name || !info.complain || !info.time){
-					alert('Please fill out the fields properly!');
-					return false;
-				}
-				// var formatted_date = 
+				// console.log(info);
+				// if (!info || !info.date || !info.name || !info.complain || !info.time){
+				// 	alert('Please fill out the fields properly!');
+				// 	return false;
+				// }
+				// var formatted_date =
 				$http.post('/addappointment',{info: info}).success(function(data){
 					// console.log(info);
 					// console.log('added');
 					// console.log(data);
 					alert('Appointment Added!');
+					console.log(data);
 				})
 			};
 			factory.removeAppointment = function(info){
